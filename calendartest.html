@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+
+table {
+    border: 1px solid green;
+    table-layout: fixed;
+    
+}
+ 
+ 
+ td {
+    border: 1px solid green;
+	width: calc(100%/7);
+    text-align: center;
+}
+
+th {
+    width: calc(100%/7);
+   
+
+}
+
+</style>
+
+<script>
+var date = calendarDate.getDate();
+var days = calendarDate.getDay();
+var calendarDate = new Date ();
+var currentYear = calendarDate.getFullYear();
+var currentMonth = calendarDate.getMonth();
+var months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var days = calendarDate.getDay();
+
+
+function yearSkeleton() {
+document.write("<table>");
+document.write("<tr>");
+// 1
+document.write("<th>");
+document.write("</th>");
+// 2
+document.write("<th>");
+document.write("</th>");
+// 3
+document.write("<th>");
+document.write("</th>");
+// 4
+document.write("<th>");
+document.write(months[currentMonth]);
+document.write(" ");
+document.write(currentYear);
+document.write("</th>");
+// 5
+document.write("<th>");
+document.write("</th>");
+// 6
+document.write("<th>");
+document.write("</th>");
+// 7
+document.write("<th>");
+document.write("</th>");
+
+document.write("</tr>");
+
+}
+
+function weekDays() {
+document.write("<tr>");
+// monday
+document.write("<td>");
+document.write("Mon.");
+document.write("</td>");
+// tuesday
+document.write("<td>");
+document.write("Tue.");
+document.write("</td>");
+// wednesday
+document.write("<td>");
+document.write("Wed.");
+document.write("</td>");
+// thursday
+document.write("<td>");
+document.write("Thurs.");
+document.write("</td>");
+// friday
+document.write("<td>");
+document.write("Fri.");
+document.write("</td>");
+// saturday
+document.write("<td>");
+document.write("Sat.");
+document.write("</td>");
+//sunday
+document.write("<td>");
+document.write("Sun.");
+document.write("</td>");
+
+}  
+function dayCells() {
+var dayNumber = 1;
+var cells = "";
+var rows = 5;
+var columns = 7;
+for (var r = 0; r < rows; r++){
+	
+	
+	cells += "<tr>";
+	for (var c = 0; c < columns; c++){
+        cells += "<td>" 
+		for (var cd = days; days <= date; cd++){
+		} 
+	cells += "</td>"
+	}
+	cells += "</tr>";
+
+}
+document.write(cells);  
+}
+
+
+
+
+
+
+
+</script>
+
+</head>
+
+<body>
+
+<script>
+yearSkeleton();
+weekDays();
+dayCells();
+
+
+</script>
+
+</body>
+
+</html>
