@@ -4,35 +4,66 @@
 <head>
 <style>
 canvas {
-color: cyan;	
+border:1px solid cyan;	
 	
 }	
 	
 </style>	
+</head>	
 	
 	
-	
-	
+<body onload="startGame()">	
 	
 <script>
 function startGame(){
-	leCactus = new component (75, 100, "cactus.jpg", 500, 150, type)
 	leCanvas.start();
-	
+	leCactus = new gamepiece (75, 100, "cactus.png", 500, 150, "image");
 }
-var = leCanvas
+var leCanvas = {
 canvas : document.createElement("canvas"),
 start: function () {
 this.canvas.width = 1500;
 this.canvas.height = 750;
 this.context = this.canvas.getContext("2d");
+
+  }
 }
 
-</script
-</head>
-<body onload="startGame()">	
+function gamepiece(width, height, color, x, y) {
+this.type = type;
+if (type == "image"){
+    this.image = new Image();
+	this.src.image = color;
+}
+this.width = width;
+this.height= height;
+this.x = x;
+this.y = y;
+var ctx= leCanvas.context;
+ctx.drawImage(this.width, this.height, this.x, this.y, this.image);
+else {
+ctx.fillStyle = color;
+ctx.fillRect(this.x, this.y, this.width, this.height);
+ }
+}
+
+
+
+
+}
+
+function gameEnvironment(){}
+var background = {
+}
+
+
+</script>
+<p>this is a game</p>
+</body>
+
 
 
 
 
 </html>
+
