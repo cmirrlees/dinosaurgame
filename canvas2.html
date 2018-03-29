@@ -4,7 +4,7 @@
 <head>
 <style>
 canvas {
-border:1px solid cyan;	
+border:1px solid black;	
 	
 }	
 	
@@ -15,55 +15,56 @@ border:1px solid cyan;
 <body onload="startGame()">	
 	
 <script>
-function startGame(){
-	leCanvas.start();
-	leCactus = new gamepiece (75, 100, "cactus.png", 500, 150, "image");
-}
-var leCanvas = {
-canvas : document.createElement("canvas"),
-start: function () {
-this.canvas.width = 1500;
-this.canvas.height = 750;
-this.context = this.canvas.getContext("2d");
+var = cactus;
 
+function startGame(){
+	cactus = new component (75, 100, "cactus.png", 500, 150, "image");
+	GameArea.start();
+	background.environment();
+	
+	
+	}
+
+var GameArea = {
+	canvas : document.createElement("canvas"),
+	start: function () {
+	this.canvas.width = 1500;
+	this.canvas.height = 750;
+	this.context = this.canvas.getContext("2d");
+	document.body.insertBefore(this.canvas, document.body.childNodes[0]);
   }
 }
 
-function gamepiece(width, height, color, x, y) {
-this.type = type;
-if (type == "image"){
-    this.image = new Image();
-	this.src.image = color;
-}
-this.width = width;
-this.height= height;
-this.x = x;
-this.y = y;
-var ctx= leCanvas.context;
-ctx.drawImage(this.width, this.height, this.x, this.y, this.image);
-else {
-ctx.fillStyle = color;
-ctx.fillRect(this.x, this.y, this.width, this.height);
- }
-}
+function component(width, height, color, x, y, type) {
+    this.type = type;
+    if (type == "image") {
+        this.image = new Image();
+        this.image.src = color;
+    }
+    this.width = width;
+    this.height = height;    
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = GameArea.context;
+        if (type == "image") {
+		ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        } else {
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
 
 
 
-
-}
-
-function gameEnvironment(){}
-var background = {
 }
 
 
-</script>
-<p>this is a game</p>
-</body>
 
 
 
 
 
 </html>
+
 
