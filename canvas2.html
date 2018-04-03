@@ -15,56 +15,50 @@ border:1px solid black;
 <body onload="startGame()">	
 	
 <script>
-var = cactus;
+var gamepiece;
+
 
 function startGame(){
-	cactus = new component (75, 100, "cactus.png", 500, 150, "image");
-	GameArea.start();
-	background.environment();
-	
-	
-	}
+	Canvas.start();
+	gamepiece= new ball(75, 75, "green", 150, 75, 33)
+}
 
-var GameArea = {
-	canvas : document.createElement("canvas"),
-	start: function () {
-	this.canvas.width = 1500;
-	this.canvas.height = 750;
-	this.context = this.canvas.getContext("2d");
-	document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+// canvas
+var Canvas = {
+canvas : document.createElement("canvas"),
+start: function () {
+this.canvas.width = 1500;
+this.canvas.height = 750;
+this.context = this.canvas.getContext("2d");
+document.body.insertBefore(this.canvas, document.body.childNodes[0]);
   }
 }
 
-function component(width, height, color, x, y, type) {
-    this.type = type;
-    if (type == "image") {
-        this.image = new Image();
-        this.image.src = color;
-    }
-    this.width = width;
-    this.height = height;    
-    this.x = x;
-    this.y = y;    
-    this.update = function() {
-        ctx = GameArea.context;
-        if (type == "image") {
-		ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
-        } else {
-            ctx.fillStyle = color;
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-        }
-    }
-
-
-
+//main game piece
+function ball(width, height, color, x, y, r) {
+this.x = x;
+this.y = y;
+this.radius = r;
+this.width = width;
+this.height = height;
+ctx = Canvas.context;
+ctx.beginPath();
+ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI, false);
+ctx.fillStyle = color;
+ctx.fill();
+ctx.lineWidth = 10;
+ctx.strokeStyle = "#95fa09";
+ctx.stroke();
 }
 
 
+
+
+</script>
+</body>
 
 
 
 
 
 </html>
-
-
