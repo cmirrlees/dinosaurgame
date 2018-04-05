@@ -16,25 +16,39 @@ border:1px solid black;
 	
 <script>
 var gamepiece;
-
+var obstacle;
 
 function startGame(){
 	Canvas.start();
-	gamepiece= new ball(75, 75, "green", 150, 75, 33)
+	gamepiece= new ball(75, 75, "green", 960, 1030, 33);
+	obstacle = new component(215, 50, "#000080" 230, 540);
 }
+
+function updateCanvas(){
+Canvas.clear();
+obstacle.update();
+obstacle.newPos
+}
+
+
+
 
 // canvas
 var Canvas = {
 canvas : document.createElement("canvas"),
 start: function () {
-this.canvas.width = 1500;
-this.canvas.height = 750;
+this.canvas.width = 1920;
+this.canvas.height = 1080;
 this.context = this.canvas.getContext("2d");
 document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+this.interval = setInterval(updateCanvas, 20);  
+  },
+  clear: function() {
+     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 }
 
-//main game piece
+// main game piece
 function ball(width, height, color, x, y, r) {
 this.x = x;
 this.y = y;
@@ -46,12 +60,28 @@ ctx.beginPath();
 ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI, false);
 ctx.fillStyle = color;
 ctx.fill();
-ctx.lineWidth = 10;
-ctx.strokeStyle = "#95fa09";
+ctx.lineWidth = 2;
+ctx.strokeStyle = "#000000";
 ctx.stroke();
 }
 
+function component(width, height, color, x, y){
+this.width = width;
+this.height = height;
+this.x = x;
+this.y = y;
+this.update= function (){
+ctx= Canvas.context;
+ctx.fillStyle = color;
+ctx.fillRect(this.x, this.y, this.width, this.height);
+ }
+	this.newPos: function() {
+	this.x +=
+	
+	}
+ 
 
+}
 
 
 </script>
