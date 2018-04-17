@@ -14,18 +14,12 @@ table {
     border: 1px solid green;
 	width: calc(100%/7);
     text-align: center;
+	
 
-}
-#currentday {
-border: 2px solid yellow;
-background-color: yellow;
-
-
-}
 </style>
 
 <script>
-var calendarDate = new Date ();
+var calendarDate = new Date();
 
 var date = calendarDate.getDate();
 
@@ -39,76 +33,111 @@ var months = ["January", "Febuary", "March", "April", "May", "June", "July", "Au
 
 var numberofDays = ["31", "", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"];
 
-var daysinMonth = numberofDays[months];
+var monthDays = numberofDays[currentMonth];
 
 
+
+function whichdayinFeb(){
+	if (currentYear%4==0)
+	{
+		months[1]=29;
+		}
+	else{
+		months[1]=28;
+	}
+	
+}
 
 function theYear() {
-document.write("<table>");
-document.write("<tr><td colspan='7'>");
-document.write(months[currentMonth]);
-document.write(" ");
-document.write(currentYear);
-document.write("</td>");
-document.write("</tr>");
+	document.write("<table>")
+	document.write("<tr><td colspan='7'>");
+	document.write(months[currentMonth]);
+	document.write(" ");
+	document.write(currentYear);
+	document.write("</td>");
+	document.write("</tr>");
 }
 
 function weekDays() {
-document.write("<tr>");
-// monday
-document.write("<td>");
-document.write("Mon.");
-document.write("</td>");
-// tuesday
-document.write("<td>");
-document.write("Tue.");
-document.write("</td>");
-// wednesday
-document.write("<td>");
-document.write("Wed.");
-document.write("</td>");
-// thursday
-document.write("<td>");
-document.write("Thurs.");
-document.write("</td>");
-// friday
-document.write("<td>");
-document.write("Fri.");
-document.write("</td>");
+	document.write("<tr>");
+	// monday
+	document.write("<td>");
+	document.write("Mon.");
+	document.write("</td>");
+	// tuesday
+	document.write("<td>");
+	document.write("Tue.");
+	document.write("</td>");
+	// wednesday
+	document.write("<td>");
+	document.write("Wed.");
+	document.write("</td>");
+	// thursday
+	document.write("<td>");
+	document.write("Thurs.");
+	document.write("</td>");
+	// friday
+	document.write("<td>");
+	document.write("Fri.");
+	document.write("</td>");
 
-document.write("<td>");
-document.write("Sat.");
-document.write("</td>");
+	document.write("<td>");
+	document.write("Sat.");
+	document.write("</td>");
 
-document.write("<td>");
-document.write("Sun.");
-document.write("</td>");
-document.write("</tr>");
-
+	document.write("<td>");
+	document.write("Sun.");
+	document.write("</td>");
+	document.write("</tr>");
 }  
-function dayCells() {
-var number = 1;
-var text = "";
-var text2 = "";
+
+function displayingtheDays(){
+var body = "";
 var rows = 5;
 var columns = 7;
-for (var r = 0; r < rows; r++){
-	text2+="<tr>";
-	document.write(text2);
-	for (var number; number <= daysinMonth; number++){
-		if (date==calendarDate){
-			document.write("<td id='currentday'>");
-				else{
-				document.write("<td>");
-				}
-		text+= number;
-		document.write(text);
-		document.write("</td>");
-		}
-document.write("</tr>")
-}
+var num1 = 0;
+calendarDate.setDate(1);
+var weekDay = calendarDate.getDay();
 
+for (let r = 0; r <= rows; r++){
+	body+= "<tr>";
+	
+		for (let i = 0; i<=weekDay; i++){
+				body+= "<td></td>";
+		}
+	
+	
+	for (let c = 0; c < columns; c++){
+		body+="<td>";
+			if (num1<=monthDays){
+				num1++;
+		}
+		body+=num1;
+		body+="</td>"
+	}
+
+body+= "</tr>";
+
+ }
+document.write(body);
 document.write("</table>");
 }
 
 
+
+</script>
+
+</head>
+
+<body>
+
+<center><script>
+whichdayinFeb();
+theYear();
+weekDays();
+displayingtheDays();
+</script></center>
+
+</body>
+
+</html>
